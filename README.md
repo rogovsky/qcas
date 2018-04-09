@@ -1,6 +1,6 @@
-# QCas library
-
 [![License: LGPL v2.1](https://img.shields.io/badge/License-LGPL%20v2.1-blue.svg)](https://www.gnu.org/licenses/old-licenses/lgpl-2.1.en.html)
+
+# QCas library
 
 QCas is a rather compact Qt library, whic implemets simple CAS protocol, for access to CAS server.
 
