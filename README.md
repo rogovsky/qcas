@@ -2,7 +2,7 @@
 
 # QCas library
 
-QCas is a rather compact Qt library, whic implemets simple CAS protocol, for access to CAS server.
+QCas is a rather compact Qt library, which implemets simple CAS protocol, for access to CAS server.
 
 ## Documentation
 
@@ -11,6 +11,7 @@ In Russian: http://vepp2k.inp.nsk.su/trac/wiki/CAS
 ## Compilation instructions:
 
 qcas.pro - file for qmake utility to build Makefile.
+
 qcas.pri - file for including sources into your project.
 
 ## Licensing library
