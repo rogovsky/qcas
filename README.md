@@ -1,4 +1,6 @@
 [![License: LGPL v2.1](https://img.shields.io/badge/License-LGPL%20v2.1-blue.svg)](https://www.gnu.org/licenses/old-licenses/lgpl-2.1.en.html)
+[![Travis Build Status](https://travis-ci.org/rogovsky/qcas.svg?branch=master)](https://travis-ci.org/rogovsky/qcas)
+[![BCH compliance](https://bettercodehub.com/edge/badge/rogovsky/qcas?branch=master)](https://bettercodehub.com/)
 
 # QCas library
 
