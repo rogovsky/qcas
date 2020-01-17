@@ -1,0 +1,68 @@
+os: linux
+dist: bionic
+
+language: cpp
+compiler: gcc
+
+env:
+  global:
+    - INSTALL_PREFIX=/tmp
+
+    # Speeding up build??!
+    # https://docs.travis-ci.com/user/speeding-up-the-build/
+    # https://docs.travis-ci.com/user/reference/overview/#Virtualization-environments
+    - MAKEFLAGS="-j 2"
+
+  jobs:
+    # Testing under Ubuntu system libraries
+    - QT_SELECT=4
+    - QT_SELECT=5
+    - QT_SELECT=5   USE_QT=beineri
+
+before_install:
+  # regular ubuntu packages
+  - sudo add-apt-repository main
+  - sudo add-apt-repository universe
+
+  # Stephan Binner ppa for newer versions of Qt
+  - if [ "x${USE_QT}" == "xbeineri" ] ; then
+       sudo add-apt-repository ppa:beineri/opt-qt-5.12.6-bionic -y ;
+    fi
+
+  # update after package changes
+  - sudo apt-get -qq update
+
+install:
+  # Qt development files
+  - sudo apt-get install -qq -y libqt4-dev
+  - sudo apt-get install -qq -y qtbase5-dev
+  - sudo apt-get install -qq -y qttools5-dev qttools5-dev-tools
+  - sudo apt-get install -qq -y qtchooser
+
+  - if [ "x${USE_QT}" == "xbeineri" ] ; then
+       sudo apt-get install -qq -y qt512-meta-minimal ;
+    fi
+
+before_script:
+  - if [ "x${USE_QT}" == "xbeineri" ] ; then
+       source /opt/qt512/bin/qt512-env.sh ;
+    fi
+
+script:
+  - pwd
+  - qmake && make
+  - ls -la
+
+after_script:
+  - make distclean
+
+after_success:
+  - echo "Success... Hooray!!!"
+
+after_failure:
+- echo "Failure..."
+
+notifications:
+  email:
+    on_success: never  # default: change
+    on_failure: always # default: always
